@@ -18,8 +18,8 @@
         </div>
         <div class="form-group">
             <label asp-for="ReleaseDate"></label>
-            <input class="form-control" asp-for="ReleaseDate" />
-            <span class="text-danger" asp-validation-for="ReleaseDate"></span>
+            <input class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")" asp-for="ReleaseDate" />
+            <span class="text-danger"  asp-validation-for="ReleaseDate"></span>
         </div>
         <button class="btn btn-primary" type="submit">Create Movie</button>
     </form>
