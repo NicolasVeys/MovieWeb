@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace MovieApp.Controllers
+namespace MovieApp.Models
+
 {
-    internal class MovieDetailViewModel
+    public class MovieDetailViewModel
     {
         public MovieDetailViewModel()
         {
