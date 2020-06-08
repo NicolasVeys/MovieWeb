@@ -46,6 +46,11 @@ namespace MovieApp.Controllers
 
         [HttpPost]
         public IActionResult Create(MovieCreateViewModel NewMovie) {
+
+            if (!TryValidateModel(NewMovie))
+            {
+                return View(NewMovie);
+            }
             _movieDatabase.Insert(new Movie
             {
                 Title = NewMovie.Title,
@@ -53,8 +58,9 @@ namespace MovieApp.Controllers
                 Genre = NewMovie.Genre,
                 ReleaseDate = NewMovie.ReleaseDate
             });
-
             return RedirectToAction("index");
+
+
         }
     }
 }
