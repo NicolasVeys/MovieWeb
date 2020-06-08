@@ -27,7 +27,7 @@ namespace MovieApp.Controllers
             }
             return View(movies);
         }
-        public IActionResult Detail(int id)
+        public IActionResult Detail()
         {
             Movie movieFromDb = _movieDatabase.GetMovie(id);
             MovieDetailViewModel movie = new MovieDetailViewModel()
@@ -42,6 +42,19 @@ namespace MovieApp.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(MovieCreateViewModel NewMovie) {
+            _movieDatabase.Insert(new Movie
+            {
+                Title = NewMovie.Title,
+                Description = NewMovie.Description,
+                Genre = NewMovie.Genre,
+                ReleaseDate = NewMovie.ReleaseDate
+            });
+
+            return RedirectToAction("index");
         }
     }
 }

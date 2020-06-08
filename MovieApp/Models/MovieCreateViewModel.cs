@@ -15,12 +15,4 @@ namespace MovieApp.Models
         public DateTime ReleaseDate { get; set; }
 
     }
-
-
-    [HttpPost]
-    public async Task<IActionResult> CreateMovie([FromForm] Movie movie)
-    {
-                public List<Movie> Movies;
-
 }
-

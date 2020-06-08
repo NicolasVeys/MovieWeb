@@ -1,6 +1,6 @@
 ﻿@model MovieApp.Models.MovieCreateViewModel
 
-    <from asp-controller="Movie" asp-action="Create" method="post">
+    <form asp-controller="Movie" asp-action="Create" method="post">
         <div class="form-group">
             <label asp-for="Title"></label>
             <input class="form-control" asp-for="Title" />
@@ -22,4 +22,4 @@
             <span class="text-danger" asp-validation-for="ReleaseDate"></span>
         </div>
         <button class="btn btn-primary" type="submit">Create Movie</button>
-    </from>
+    </form>
