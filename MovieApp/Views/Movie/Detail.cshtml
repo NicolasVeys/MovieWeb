@@ -1,14 +1,51 @@
 ﻿@model MovieApp.Models.MovieDetailViewModel
 
-<label>titel</label> <br /> 
-<strong>@Model.Title</strong> <br />    <br />  
+<label>titel</label>
+<br />
+<strong>@Model.Title</strong>
+<br />
+<br />
 
-<label>Beschrijving</label><br />
-<strong>@Model.Description</strong><br /><br />
+<label>Beschrijving</label>
+<br />
+<strong>@Model.Description</strong>
+<br />
+<br />
 
-<label>Genre</label><br />
-<strong>@Model.Genre</strong><br /><br />
+<label>Genre</label>
+<br />
+@if (Model.Genre == null)
+{
+    <p>Er is geen genre</p>
+}
+else
+{
+    <strong>@Model.Genre</strong>
+    <br />
+    <br />
 
-<label>Uitgeefdatum</label><br />
-<strong>@Model.ReleaseDate</strong><br /><br />
+}
 
+<label>Uitgeefdatum</label>
+<br />
+<strong>@CalculateReleaseDateMessage(Model.ReleaseDate)</strong>
+<br />
+<br />
+
+
+@functions{
+    string CalculateReleaseDateMessage(DateTime ReleaseDate)
+    {
+        if (ReleaseDate < DateTime.Today)
+        {
+            string Released = "Out now! release date: " + ReleaseDate.ToString();
+            return Released;
+        }
+        else
+        {
+            double daysUntillRelease = (ReleaseDate - DateTime.Today).TotalDays;
+            string Unreleased = "days Untill Release: " + daysUntillRelease + "days";
+            return Unreleased;
+        }
+    }
+}
