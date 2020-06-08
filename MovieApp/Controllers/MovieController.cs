@@ -27,7 +27,7 @@ namespace MovieApp.Controllers
             }
             return View(movies);
         }
-        public IActionResult Detail()
+        public IActionResult Detail(int id)
         {
             Movie movieFromDb = _movieDatabase.GetMovie(id);
             MovieDetailViewModel movie = new MovieDetailViewModel()
