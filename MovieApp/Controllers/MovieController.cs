@@ -62,5 +62,43 @@ namespace MovieApp.Controllers
 
 
         }
+        public IActionResult Edit(int id) 
+        {
+            Movie movieFromDb = _movieDatabase.GetMovie(id);
+            EditMovieViewModel vm = new EditMovieViewModel()
+            {
+                Title = movieFromDb.Title,
+                Description = movieFromDb.Description,
+                Genre = movieFromDb.Genre,
+                ReleaseDate = movieFromDb.ReleaseDate
+            };
+            return View(vm);
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, EditMovieViewModel vm)
+        {
+            if (!TryValidateModel(vm))
+            {
+                return View(vm);
+            }
+
+            Movie domainMovie = new Movie()
+            {
+                Id = id,
+                Title = vm.Title,
+                Description = vm.Description,
+                Genre = vm.Genre,
+                ReleaseDate = vm.ReleaseDate,
+            };
+            _movieDatabase.Update(id, domainMovie);
+
+            return RedirectToAction("detail", new {Id = id});
+
+
+        }
+
+
     }
 }

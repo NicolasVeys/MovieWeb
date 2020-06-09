@@ -36,9 +36,9 @@ else
 @functions{
     string CalculateReleaseDateMessage(DateTime ReleaseDate)
     {
-        if (ReleaseDate < DateTime.Today)
+        if (ReleaseDate <= DateTime.Today)
         {
-            string Released = "Out now! release date: " + ReleaseDate.ToString();
+            string Released = $"Out now! release date: {ReleaseDate.ToString("dd/MM/yyyy")}";
             return Released;
         }
         else

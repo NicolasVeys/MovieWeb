@@ -1,0 +1,27 @@
+﻿@model MovieApp.Models.EditMovieViewModel
+
+    <form asp-controller="Movie" asp-action="Edit" method="post">
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input class="form-control" asp-for="Title" />
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Genre"></label>
+            <input class="form-control" asp-for="Genre" />
+            <span class="text-danger" asp-validation-for="Genre"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input class="form-control" asp-for="Description" />
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReleaseDate"></label>
+            <input class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")" asp-for="ReleaseDate" />
+            <span class="text-danger" asp-validation-for="ReleaseDate"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">Edit Movie</button>
+
+
+    </form>
