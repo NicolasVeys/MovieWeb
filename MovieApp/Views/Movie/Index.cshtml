@@ -16,11 +16,15 @@ else
         @foreach (var movie in Model)
         {
             <tr>
+                <td>@movie.Title </td>
                 <td>
-                    @movie.Title <a asp-controller="Movie" asp-action="Detail" asp-route-id="@movie.Id"> Movie details</a>
+                    <button  class="btn btn-secondary"><a class="text-white" asp-controller="Movie" asp-action="Detail" asp-route-id="@movie.Id"> Movie details</a></button>
                 </td>
                 <td>
-                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.Id">Edit movie</a>
+                    <button class="btn btn-secondary"><a class="text-white" asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.Id"> Edit movie</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-secondary"><a class="text-white" asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.Id"> Remove movie</a></button>
                 </td>
             </tr>
         }

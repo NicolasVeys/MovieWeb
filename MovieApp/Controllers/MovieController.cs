@@ -45,7 +45,8 @@ namespace MovieApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(MovieCreateViewModel NewMovie) {
+        public IActionResult Create(MovieCreateViewModel NewMovie)
+        {
 
             if (!TryValidateModel(NewMovie))
             {
@@ -62,7 +63,7 @@ namespace MovieApp.Controllers
 
 
         }
-        public IActionResult Edit(int id) 
+        public IActionResult Edit(int id)
         {
             Movie movieFromDb = _movieDatabase.GetMovie(id);
             EditMovieViewModel vm = new EditMovieViewModel()
@@ -94,11 +95,26 @@ namespace MovieApp.Controllers
             };
             _movieDatabase.Update(id, domainMovie);
 
-            return RedirectToAction("detail", new {Id = id});
-
-
+            return RedirectToAction("detail", new { Id = id });
         }
 
 
+        public IActionResult Delete(int id)
+        {
+            Movie movieFromDb = _movieDatabase.GetMovie(id);
+            MovieDeleteViewModel movie = new MovieDeleteViewModel()
+            {
+                Id = id,
+                Title = movieFromDb.Title
+
+            };
+            return View(movie);
+        }
+
+        public IActionResult ConfirmDelete(int id)
+        {
+            _movieDatabase.Delete(id);
+            return RedirectToAction("");
+        }
     }
 }

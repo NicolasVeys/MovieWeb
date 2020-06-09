@@ -1,0 +1,7 @@
+﻿@model MovieApp.Models.MovieDeleteViewModel
+
+
+Weet je zekerdat je @Model.Title wil verwijderen?
+<button class="btn btn-danger" type="submit"><a class="text-white" asp-controller="Movie" asp-action="ConfirmDelete" asp-route-id="@Model.Id"> Delete Movie</a></button>
+<button class="btn btn-primary" type="submit"><a class="text-white" asp-controller="Movie" asp-action="">Cancel</a></button>
+
